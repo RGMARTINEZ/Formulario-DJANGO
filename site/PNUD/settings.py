@@ -79,7 +79,7 @@ DATABASES = {
     "default":
     {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "pnud_local",
+        "NAME": "postgres",
         "USER": "postgres",
         "PASSWORD": "protools",
         "HOST": "127.0.0.1",
