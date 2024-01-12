@@ -65,8 +65,45 @@ OPCIONES_EDAD = [
         ('95 y más', '95 y más'),
     ]
 
+OPCIONES_AUTORIZAR_USO = [
+        ('SI', 'SI'),
+        ('NO', 'NO'),
+    ]
+
+OPCIONES_CLASE_SOCIAL = [
+        ('Clase alta', 'Clase alta'),
+        ('Clase media', 'Clase media'),
+        ('Vulnerable', 'Vulnerable'),
+        ('Pobre', 'Pobre'),
+    ]
+
+OPCIONES_IDIOMAS = [
+        ('Español', 'Español'),
+        ('Inglés', 'Inglés'),
+        ('Bilingüe o multilingüe', 'Bilingüe o multilingüe'),
+        ('No estoy seguro/No aplicable.', 'No estoy seguro/No aplicable.'),
+        ('Otro', 'Otro'),
+    ]
+
+OPCIONES_TIPO_ACTIVIDAD = [
+        ('Servicios religiosos abiertos al público.', 'Servicios religiosos abiertos al público.'),
+        ('Eventos culturales o artísticos.', 'Eventos culturales o artísticos.'),
+        ('Programas de voluntariado y servicio comunitario.', 'Programas de voluntariado y servicio comunitario.'),
+        ('Programas educativos o talleres.', 'Programas educativos o talleres.'),
+        ('Actividades deportivas o recreativas.', 'Actividades deportivas o recreativas.'),
+        ('Programas de asistencia social.', 'Programas de asistencia social.'),
+        ('No realiza actividades de interacción con la comunidad en general.', 'No realiza actividades de interacción con la comunidad en general.'),
+        ('Otro', 'Otro'),
+    ]
+
 
 class Encuesta(models.Model):
+
+    autoriza_uso_informacion = models.CharField(
+        '¿Usted esta de acuerdo y autoriza el uso de la información conforme a las políticas de datos de PNUD? '
+        '(puede seleccionar varios)',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_AUTORIZAR_USO)
+
     nombre_entidad_religiosa = models.CharField(
         'Nombre de la Entidad Religiosa', blank=False, null=False, max_length=255, default="")
     nombre_persona = models.CharField(
@@ -128,10 +165,141 @@ class Encuesta(models.Model):
     distribucion_mujeres_entidad = models.PositiveIntegerField(
         'De acuerdo al sexo (Mujeres),¿Cuál es la distribución porcentual '
         'de este en su Entidad religiosa? (ejemplo: 60% mujeres)', blank=False, null=False, default=0)
+    #####
+    clase_social = models.CharField(
+        'De acuerdo a la clase social, ¿Cuál la principal clase que atiende su Entidad religiosa? (seleccione SOLO una)'
+        '(puede seleccionar solo una)',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_CLASE_SOCIAL)
+    #####
+    idioma_principal = MultiSelectField(
+        '¿Cuál es el idioma/dialecto principal de su comunidad religiosa?'
+        '(puede seleccionar solo una)',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_IDIOMAS)
 
+    otra_idioma = models.CharField(
+        'Otro idioma', blank=True, null=True, max_length=255)
+    
+    #####
+    tipo_actividad = MultiSelectField(
+        '¿Qué tipo de actividad o programas realiza su Entidad religiosa para interactuar con la comunidad en general?'
+        '(puede seleccionar solo una)',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_TIPO_ACTIVIDAD)
 
+    otra_actividad= models.CharField(
+        'Otro actividad', blank=True, null=True, max_length=255)
+    
+    ##### TODOODODOODOOD
+    tipo_servicios = MultiSelectField(
+        '¿Qué tipo de servicios sociales ofrecen a la población local?'
+        '(puede seleccionar varios)',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_TIPO_ACTIVIDAD)
 
+    otra_servicios= models.CharField(
+        'Otro actividad', blank=True, null=True, max_length=255)
+    
+    #####
+    participacion_poblacion = MultiSelectField(
+        '¿Cómo se promueve la participación de la población en las actividades de su Entidad religiosa?'
+        '(puede seleccionar varios)',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_TIPO_ACTIVIDAD)
 
+    otra_participacion= models.CharField(
+        'Otro actividad', blank=True, null=True, max_length=255)
+    
+    #####
+    colabora_proyectos_comunitarios = models.CharField(
+        '¿Ha colaborado su Entidad religiosa con otras organizaciones no religiosas en proyectos comunitarios?',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_AUTORIZAR_USO)
+    
+    #####
+    cambio_demografia = models.CharField(
+        '¿Ha notado algún cambio en la demografía o en las creencias religiosas de la población a lo largo del tiempo? Si es así, ¿cómo ha afectado esto a su Entidad religiosa?',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_AUTORIZAR_USO)
+    
+    #####
+    caracter_confesinal = models.CharField(
+        '¿Cuál es carácter confesional específico de su Entidad religiosa ?',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_AUTORIZAR_USO)
+    
+    otra_caracter_confesional= models.CharField(
+        'Otro actividad', blank=True, null=True, max_length=255)
 
+    #####
+    entidad_registrada = models.CharField(
+        ' ¿La Entidad religiosa está registrada en Colombia?',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_AUTORIZAR_USO)
+    
+    #####
+    tipo_vocacion = models.CharField(
+        '¿Qué tipo de vocación tiene la Entidad religiosa en Colombia?',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_AUTORIZAR_USO)
+    
+    otra_vocacion= models.CharField(
+        'Otra vocación', blank=True, null=True, max_length=255)
 
+    #####
+    tiene_organizaciones_sector = models.CharField(
+        '¿La Entidad religiosa tiene organizaciones del sector, como fundaciones o colegios religiosos, registradas en Colombia?',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_AUTORIZAR_USO)
 
+   #####
+    participa_actividades_caridad= models.CharField(
+        '¿La Entidad religiosa participa en actividades de caridad o servicio social en Colombia? Si es así, describa estas actividades.',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_AUTORIZAR_USO)
+
+   #####
+    otros_departamentos_actividades= models.CharField(
+        '¿Qué otros departamentos tiene actividades?', blank=True, null=True, max_length=255)
+
+   #####
+    otros_municipios_actividades= models.CharField(
+        '¿Qué otros municipios tiene actividades?', blank=True, null=True, max_length=255)
+    
+ 
+    #####
+    colabora_proyectos_sociales = MultiSelectField(
+        '¿Colabora su Entidad religiosa con otras organizaciones religiosas o no religiosas en proyectos o iniciativas sociales en Colombia?.'
+        '(puede seleccionar varios)',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_TIPO_ACTIVIDAD)
+    
+    #####
+    interactua_comunidad_local = MultiSelectField(
+        '¿Cómo interactúa su Entidad religiosa con la comunidad local en Colombia?'
+        '(puede seleccionar varios)',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_TIPO_ACTIVIDAD)
+
+    #####
+    ofrece_servicios_poblaciones = models.CharField(
+        '¿Ofrece servicios religiosos o de apoyo a grupos específicos poblaciones dentro de la sociedad colombiana?',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_AUTORIZAR_USO)
+
+    #####
+    promueve_participacion_poblacion = MultiSelectField(
+        '¿Cómo promueve la participación de la población local en sus actividades?',
+        '(puede seleccionar varios)',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_TIPO_ACTIVIDAD)
+    
+    #####
+    impacto_comunidad_valores = models.CharField(
+        '¿Ha tenido su Entidad religiosa un impacto significativo en la comunidad o la sociedad colombiana en términos de valores, ética y cultura?',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_AUTORIZAR_USO)
+    
+    #####
+    lideres_participan_instancia = models.CharField(
+        '¿Sus líderes y autoridades religiosas participan en alguna instancia de participación local o nacional? Si es así, por favor, especifique el tipo de instancia y su nivel de participación.',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_AUTORIZAR_USO)
+
+    #####
+    relacionamiento_gobierno_entidad = models.CharField(
+        '¿Cómo es el relacionamiento del gobierno local con la entidad religiosa?',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_AUTORIZAR_USO)
+    
+    #####
+    garantia_libertad= models.CharField(
+        '¿Cómo percibe la garantía de libertad de culto en su entidad local?',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_AUTORIZAR_USO)
+    
+    #####
+    participa_proyectos_sociales= models.CharField(
+        '¿La Entidad religiosa participa activamente en proyectos o programas sociales en Colombia?',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_AUTORIZAR_USO)
