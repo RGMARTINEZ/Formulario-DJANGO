@@ -1,4 +1,6 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
-from django.urls import reverse
-from django.views import generic
+# some_app/views.py
+from django.views.generic import TemplateView
+
+
+class PaginaInicial(TemplateView):
+    template_name = "encuestas/NiceAdmin/index.html"

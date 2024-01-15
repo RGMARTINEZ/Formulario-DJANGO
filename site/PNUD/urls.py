@@ -16,9 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from ENCUESTAS.views import PaginaInicial
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("encuestas/", include("ENCUESTAS.urls")),
-
+    path("home/", PaginaInicial.as_view()),
 ]
