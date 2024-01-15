@@ -490,7 +490,7 @@ OPCIONES_CAMBIO_DEMOGRAFIA = [
         (NO_BRINDA_APOYO, 'No, no brinda apoyo económico en estos casos.'),
         (NO_SEGURO_APOYO_NO_APLICABLE, 'No estoy seguro/No aplicable.'),
     ]
-###  32
+###  53
 
 
     SEGURO_VIDA_INCAPACIDAD_CHOICES = [
@@ -498,7 +498,7 @@ OPCIONES_CAMBIO_DEMOGRAFIA = [
         (NO_OFRECE_SEGURO, 'No, no ofrece este tipo de seguro.'),
         (NO_SEGURO_NO_APLICABLE, 'No estoy seguro/No aplicable.'),
     ]
-###  32
+###  54
 
 
     FORMACION_SEGURIDAD_SOCIAL_CHOICES = [
@@ -506,14 +506,14 @@ OPCIONES_CAMBIO_DEMOGRAFIA = [
         (NO_SE_PROPORCIONA, 'No, no se proporciona formación ni capacitación en este tema.'),
         (NO_SEGURO_NO_APLICABLE, 'No estoy seguro/No aplicable.'),
     ]
-###  32
+###  55
 
     DESAFIOS_SEGURIDAD_SOCIAL_CHOICES = [
         (ENFRENTADO_DESAFIOS, 'Sí, he enfrentado desafíos relacionados con la seguridad social.'),
         (SIN_DESAFIOS, 'No, no he enfrentado desafíos en este aspecto.'),
         (NO_SEGURO_NO_APLICABLE, 'No estoy seguro/No aplicable.'),
     ]
-###  32
+###  56
 
     BENEFICIOS_ADICIONALES_CHOICES = [
         (MAS_COBERTURA_MEDICA, 'Más cobertura médica.'),
@@ -523,14 +523,14 @@ OPCIONES_CAMBIO_DEMOGRAFIA = [
         (NO_SUGERENCIAS_ADICIONALES, 'No tengo sugerencias adicionales.'),
         (NO_SEGURO_NO_APLICABLE, 'No estoy seguro/No aplicable.'),
     ]
-###  32
+###  57
 
     PARTICIPACION_HUMANITARIA_CHOICES = [
         (SI, 'Sí'),
         (NO, 'No'),
         (NO_SABE_NO_APLICA, 'No sabe/No aplica'),
     ]
-###  32
+###  58
 
     ACTIVIDADES_HUMANITARIAS_CHOICES = [
         (SI_COLABORA_REGULARMENTE, 'Sí, colabora regularmente con agencias gubernamentales en proyectos humanitarios en Colombia'),
@@ -539,16 +539,16 @@ OPCIONES_CAMBIO_DEMOGRAFIA = [
         (NO_NO_COLABORA, 'No, nuestra organización religiosa no colabora con agencias gubernamentales ni organizaciones no religiosas en proyectos humanitarios en Colombia.'),
         (NO_APLICA, 'No aplicable / No estamos involucrados en proyectos humanitarios en Colombia.'),
     ]
-###  32
+###  59
 
-    ALCANCE_GEOGRAFICO_CHOICES = [
+    ALCANCE_GEOGRAFICO_CHOICES_HUMANITARIAS = [
         (NIVEL_NACIONAL, 'Nivel nacional: Nuestras actividades humanitarias abarcan todo el territorio de Colombia.'),
         (REGIONAL, 'Regional: Nuestras actividades se centran en una región específica o algunas regiones de Colombia.'),
         (LOCAL, 'Local: Nos enfocamos en comunidades o áreas específicas dentro de una región.'),
         (INTERNACIONAL, 'Internacional: Nuestra organización también realiza actividades humanitarias fuera de Colombia.'),
         (NO_APLICA_ALCANCE_GEOGRAFICO, 'No aplicable: No estamos involucrados en actividades humanitarias en Colombia.'),
     ]
-###  32
+###  60
 
     INTERACCION_COMUNIDAD_CHOICES = [
         (PROGRAMAS_PARTICIPACION_COMUNITARIA, 'Establecemos programas de participación comunitaria y colaboramos activamente con líderes locales.'),
@@ -559,7 +559,7 @@ OPCIONES_CAMBIO_DEMOGRAFIA = [
         (TODAS_LAS_ANTERIORES, 'Todas las anteriores.'),
         (NO_INTERACTUA_DIRECTAMENTE, 'No interactuamos de manera directa con la comunidad local en Colombia en relación con el actuar humanitario.'),
     ]
-###  32
+###  61
 
     ENFOQUE_SERVICIOS_HUMANITARIOS_CHOICES = [
         ('grupo_vulnerables', 'Sí, nos enfocamos en brindar servicios humanitarios a grupos vulnerables como niños, ancianos o personas con discapacidades.'),
@@ -568,7 +568,7 @@ OPCIONES_CAMBIO_DEMOGRAFIA = [
         ('desplazados_conflictos', 'Sí, colaboramos con organizaciones que trabajan específicamente con grupos desplazados por conflictos en Colombia.'),
         ('general_sociedad_colombiana', 'No, ofrecemos servicios humanitarios de manera general a la sociedad colombiana sin focalizarnos en grupos específicos.'),
     ]
-###  32
+###  62
 
     PARTICIPACION_COMUNITARIA_CHOICES = [
         (CAPACITACION_LIDERES_COMUNITARIOS, 'Fomentamos la capacitación y formación de líderes comunitarios locales para que participen en la planificación y ejecución de proyectos humanitarios.'),
@@ -579,7 +579,7 @@ OPCIONES_CAMBIO_DEMOGRAFIA = [
         (TODAS_LAS_ANTERIORES_PARTICIPACION_COMUNITARIA, 'Todas las anteriores.'),
         (NO_PROMOVEMOS_PARTICIPACION_COMUNITARIA, 'No promovemos la participación de la población local en nuestras actividades humanitarias.'),
     ]
-###  32
+###  63
 
     DESAFIOS_CHOICES = [
         (LIMITACIONES_FINANCIERAS, 'Limitaciones financieras y dificultades para recaudar fondos suficientes.'),
@@ -593,7 +593,7 @@ OPCIONES_CAMBIO_DEMOGRAFIA = [
         (CAMBIOS_NECE_SOCIEDAD_SERVICIO, 'Cambios en las necesidades de la población a la que servimos.'),
         (OTROS_DESAFIOS, 'Otros desafíos no mencionados anteriormente.'),
     ]
-###  32
+###  64
 
    PLANES_PERSPECTIVAS_CHOICES = [
         (AMPLIAR_OPERACIONES, 'Ampliar nuestras operaciones humanitarias en nuevas áreas geográficas en Colombia.'),
@@ -608,7 +608,7 @@ OPCIONES_CAMBIO_DEMOGRAFIA = [
         (TODAS_LAS_ANTERIORES, 'Todas las anteriores.'),
         (NO_TENEMOS_PLANES, 'No tenemos planes futuros específicos en este momento.'),
     ]
-###  32
+###  65
 
     ACTIVIDADES_CUIDADO_CHOICES = [
         (MANTENIMIENTO_VESTUARIO, 'Mantenimiento del vestuario (Lavar, planchar o guardar la ropa de las personas del hogar, Reparar ropa, cobijas, maletas o calzado de las personas del hogar, Llevar o recoger ropa o zapatos de la lavandería o zapatería)'),
@@ -942,71 +942,83 @@ class Encuesta(models.Model):
         '¿La Entidad religiosa brinda apoyo económico o asistencia financiera a sus líderes '
         'religiosos en caso de enfermedad o emergencia?',
         blank=True, null=True, max_length=255, default="", choices=APOYO_ECONOMICO_CHOICES)
+    ###  53
 
     proporciona_seguro_vida = models.CharField(
         '¿Su Entidad religiosa ofrece algún tipo de seguro de vida o seguro de incapacidad para sus líderes religiosos?',
-        blank=True, null=True, max_length=255, default="", choices=OPCIONES_AUTORIZAR_USO)
+        blank=True, null=True, max_length=255, default="", choices=SEGURO_VIDA_INCAPACIDAD_CHOICES)
+    ###  54
 
     proporciona_formacion_social = models.CharField(
         '¿Se proporciona algún tipo de formación o capacitación sobre seguridad social y '
         'beneficios para líderes religiosos en su Entidad religiosa?',
-        blank=True, null=True, max_length=255, default="", choices=OPCIONES_AUTORIZAR_USO)
+        blank=True, null=True, max_length=255, default="", choices=FORMACION_SEGURIDAD_SOCIAL_CHOICES)
+    ###  55
 
     experimentado_problema_seguridad_social = models.CharField(
         '¿Ha experimentado algún problema o desafío específico relacionado con la seguridad '
         'social o los beneficios en su papel como líder religioso??',
-        blank=True, null=True, max_length=255, default="", choices=OPCIONES_AUTORIZAR_USO)
+        blank=True, null=True, max_length=255, default="", choices=DESAFIOS_SEGURIDAD_SOCIAL_CHOICES)
+    ###  56
 
     beneficios_implementado_seguridad = MultiSelectField(
         '¿Qué tipo de beneficios o apoyo adicional le gustaría ver implementado o mejorado en '
         'su Entidad religiosa en relación con la seguridad social?'
         '(puede seleccionar varios)',
-        blank=True, null=True, max_length=255, default="", choices=OPCIONES_TIPO_ACTIVIDAD)
-
+        blank=True, null=True, max_length=255, default="", choices=BENEFICIOS_ADICIONALES_CHOICES)
     otra_beneficios_implementado_seguridad = models.CharField(
         'Otros resultados', blank=True, null=True, max_length=255)
+    ###  57
 
     participa_actividades_humanitarias = models.CharField(
         '¿La organización religiosa participa activamente en actividades humanitarias en su territorio?',
-        blank=True, null=True, max_length=255, default="", choices=OPCIONES_AUTORIZAR_USO)
+        blank=True, null=True, max_length=255, default="", choices=PARTICIPACION_HUMANITARIA_CHOICES)
+    ###  58
 
     colabora_agencias_humanitarios = models.CharField(
         '¿Colabora su organización religiosa con agencias gubernamentales u organizaciones '
         'no religiosas en proyectos humanitarios en Colombia?',
-        blank=True, null=True, max_length=255, default="", choices=OPCIONES_AUTORIZAR_USO)
+        blank=True, null=True, max_length=255, default="", choices=ACTIVIDADES_HUMANITARIAS_CHOICES)
+    ###  59
 
     alcance_actividades_humanitarias = models.CharField(
         '¿Cuál es el alcance geográfico de las actividades humanitarias de su organización en Colombia?',
-        blank=True, null=True, max_length=255, default="", choices=OPCIONES_AUTORIZAR_USO)
+        blank=True, null=True, max_length=255, default="", choices=ALCANCE_GEOGRAFICO_CHOICES)
+    ###  60
 
     interactua_comunidad_humanitario = MultiSelectField(
         '¿¿Cómo interactúa su organización religiosa con la comunidad local en Colombia '
         'en relación con el actuar humanitario?'
         '(puede seleccionar varios)',
-        blank=True, null=True, max_length=255, default="", choices=OPCIONES_TIPO_ACTIVIDAD)
+        blank=True, null=True, max_length=255, default="", choices=INTERACCION_COMUNIDAD_CHOICES)
+    ###  61
 
     ofrece_servicios_humanitarios = models.CharField(
         '¿Ofrece servicios humanitarios a grupos específicos dentro de la sociedad colombiana?',
-        blank=True, null=True, max_length=255, default="", choices=OPCIONES_AUTORIZAR_USO)
+        blank=True, null=True, max_length=255, default="", choices=ENFOQUE_SERVICIOS_HUMANITARIOS_CHOICES)
+    ###  62
 
     promueve_participacion_humanitarias = MultiSelectField(
         '¿Cómo promueve la participación de la población local en sus actividades humanitarias?'
         '(puede seleccionar varios)',
-        blank=True, null=True, max_length=255, default="", choices=OPCIONES_TIPO_ACTIVIDAD)
+        blank=True, null=True, max_length=255, default="", choices=PARTICIPACION_COMUNITARIA_CHOICES)
+    ###  63
 
     principales_desafios_humanitarios = MultiSelectField(
         '¿Cuáles son los principales desafíos que enfrenta su organización religiosa '
         'en Colombia en la actualidad en relación con su actuación humanitaria?'
         '(puede seleccionar varios)',
-        blank=True, null=True, max_length=255, default="", choices=OPCIONES_TIPO_ACTIVIDAD)
+        blank=True, null=True, max_length=255, default="", choices=DESAFIOS_CHOICES)
+    ###  64
 
     planes_futuras_humanitarias = MultiSelectField(
         '¿Cuáles son sus planes o perspectivas futuras para continuar su labor humanitaria en Colombia?'
         '(puede seleccionar varios)',
-        blank=True, null=True, max_length=255, default="", choices=OPCIONES_TIPO_ACTIVIDAD)
+        blank=True, null=True, max_length=255, default="", choices=PLANES_PERSPECTIVAS_CHOICES)
+    ###  65
 
     realiza_cuidados_comunidad = MultiSelectField(
         '¿Habitualmente realiza alguna de las siguientes actividades de cuidado '
         'dirigidos a otros hogares o a su comunidad?'
         '(puede seleccionar varios)',
-        blank=True, null=True, max_length=255, default="", choices=OPCIONES_TIPO_ACTIVIDAD)
+        blank=True, null=True, max_length=255, default="", choices=ACTIVIDADES_CUIDADO_CHOICES)
