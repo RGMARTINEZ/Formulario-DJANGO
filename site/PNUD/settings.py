@@ -100,16 +100,6 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/4.2/topics/i18n/
-
-LANGUAGE_CODE = "en-us"
-
-TIME_ZONE = "America/Bogota"
-
-USE_I18N = True
-
 USE_TZ = True
 
 
@@ -126,3 +116,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'ENCUESTAS/static'),
 ]
+
+LANGUAGE_CODE = 'es-co'  # 'es-co' is the language code for Colombian Spanish
+
+TIME_ZONE = 'America/Bogota'  # Set the time zone for Colombia
+
+USE_I18N = True  # Enable internationalization
+USE_L10N = True  # Enable localization
