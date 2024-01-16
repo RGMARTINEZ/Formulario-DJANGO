@@ -37,8 +37,8 @@ class EncuestaModelForm(forms.ModelForm):
         for field_name, field in self.fields.items():
             if not isinstance(field.widget, forms.CheckboxSelectMultiple):
                 field.widget.attrs['class'] = 'form-control'
-            if fields_to_hidde.get(field_name):
-                field.widget.attrs['class'] = 'form-control'
-                field.widget.attrs['style'] = 'display: none'
+            # if fields_to_hidde.get(field_name):
+            #     field.widget.attrs['class'] = 'form-control'
+            #     field.widget.attrs['style'] = 'display: none'
 
 
