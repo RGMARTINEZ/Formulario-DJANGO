@@ -318,7 +318,7 @@ OPCIONES_INICIATIVAS_PROYECTOS = [
     ('PROGRAMAS_VIVIENDA', 'Programas de vivienda para población vulnerable.'),
     ('APOYO_NINOS_JOVENES', 'Actividades de apoyo a niños y jóvenes en riesgo.'),
     ('PROYECTOS_COMUNITARIOS', 'Proyectos de desarrollo comunitario.'),
-    ('OTROS_INICIATIVAS', 'Otros'),
+    ('OTRAS_INICIATIVAS', 'Otros'),
     ('NO_LLEVADO_A_CABO', 'No hemos llevado a cabo iniciativas o proyectos sociales en Colombia en los últimos años.'),
     ('NO_SEGURO_NO_APLICABLE', 'No estoy seguro/No aplicable.'),
 ]
@@ -704,8 +704,7 @@ ACTIVIDADES_CUIDADO_CHOICES = [
 class Encuesta(models.Model):
 
     autoriza_uso_informacion = models.CharField(
-        '¿Usted esta de acuerdo y autoriza el uso de la información conforme a las políticas de datos de PNUD? '
-        '(puede seleccionar varios)',
+        '¿Usted esta de acuerdo y autoriza el uso de la información conforme a las políticas de datos de PNUD?',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_AUTORIZAR_USO)
     ###  1.
     nombre_entidad_religiosa = models.CharField(
@@ -739,7 +738,7 @@ class Encuesta(models.Model):
     ###  10.
     poblacion_entidad = MultiSelectField(
         'De acuerdo con su cultura, pueblo o rasgos físicos, '
-        '¿Qué población atienden y ayuda su entidad religiosa?'
+        '¿Qué población atienden y ayuda su entidad religiosa? '
         '(puede marcar varias)', blank=False, null=False, max_length=255, default="", choices=TIPO_POBLACION)
     otra_poblacion_entidad = models.CharField(
         'Otro tipo de población seleccionado', blank=True, null=True, max_length=255)
@@ -761,7 +760,7 @@ class Encuesta(models.Model):
     otra_discapacidad = models.CharField(
         'Otro discapacidad seleccionada', blank=True, null=True, max_length=255)
     ###  13.
-    grupo_demografico = models.CharField(
+    grupo_demografico = MultiSelectField(
         'De acuerdo a la edad, ¿Cuál es el grupo demográfico principal al que sirve su Entidad religiosa? '
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_EDAD)
@@ -777,38 +776,35 @@ class Encuesta(models.Model):
     ###  15.
     clase_social = models.CharField(
         'De acuerdo a la clase social, ¿Cuál la principal clase '
-        'que atiende su Entidad religiosa? (seleccione SOLO una)'
-        '(puede seleccionar solo una)',
+        'que atiende su Entidad religiosa?',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_CLASE_SOCIAL)
     ###  16.
     idioma_principal = MultiSelectField(
-        '¿Cuál es el idioma/dialecto principal de su comunidad religiosa?'
-        '(puede seleccionar solo una)',
+        '¿Cuál es el idioma/dialecto principal de su comunidad religiosa?',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_IDIOMAS)
-    otra_idioma = models.CharField(
+    otro_idioma = models.CharField(
         'Otro idioma', blank=True, null=True, max_length=255)
     ###  17.
     tipo_actividad = MultiSelectField(
         '¿Qué tipo de actividad o programas realiza su Entidad religiosa '
-        'para interactuar con la comunidad en general?'
-        '(puede seleccionar solo una)',
+        'para interactuar con la comunidad en general?',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_TIPO_ACTIVIDAD)
-    otra_actividad= models.CharField(
-        'Otro actividad', blank=True, null=True, max_length=255)
+    otra_actividad = models.CharField(
+        'Otra actividad', blank=True, null=True, max_length=255)
     ###  18.
     tipo_servicios = MultiSelectField(
-        '¿Qué tipo de servicios sociales ofrecen a la población local?'
+        '¿Qué tipo de servicios sociales ofrecen a la población local? '
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_TIPO_SERVICIOS)
-    otra_servicios= models.CharField(
-        'Otro actividad', blank=True, null=True, max_length=255)
+    otro_servicio = models.CharField(
+        'Otro servicio', blank=True, null=True, max_length=255)
     ###  19.
     participacion_poblacion = MultiSelectField(
-        '¿Cómo se promueve la participación de la población en las actividades de su Entidad religiosa?'
+        '¿Cómo se promueve la participación de la población en las actividades de su Entidad religiosa? '
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_PARTICIPACION_POBLACION)
     otra_participacion= models.CharField(
-        'Otro actividad', blank=True, null=True, max_length=255)
+        'Otra participacion', blank=True, null=True, max_length=255)
     ###  20.
     colabora_proyectos_comunitarios = models.CharField(
         '¿Ha colaborado su Entidad religiosa con otras organizaciones no religiosas en proyectos comunitarios?',
@@ -822,8 +818,8 @@ class Encuesta(models.Model):
     caracter_confesinal = models.CharField(
         '¿Cuál es carácter confesional específico de su Entidad religiosa ?',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_CARACTER_CONFESIONAL)
-    otra_caracter_confesional= models.CharField(
-        'Otro actividad', blank=True, null=True, max_length=255)
+    otro_caracter_confesional = models.CharField(
+        'Otro caracter confesional', blank=True, null=True, max_length=255)
     ###  23
     entidad_registrada = models.CharField(
         ' ¿La Entidad religiosa está registrada en Colombia?',
@@ -854,14 +850,14 @@ class Encuesta(models.Model):
 
     colabora_proyectos_sociales = MultiSelectField(
         '¿Colabora su Entidad religiosa con otras organizaciones religiosas o no '
-        'religiosas en proyectos o iniciativas sociales en Colombia?.'
+        'religiosas en proyectos o iniciativas sociales en Colombia?. '
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_COLABORACION)
 
     ###  28
 
     interactua_comunidad_local = MultiSelectField(
-        '¿Cómo interactúa su Entidad religiosa con la comunidad local en Colombia?'
+        '¿Cómo interactúa su Entidad religiosa con la comunidad local en Colombia? '
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_INTERACCION)
     ###  29
@@ -873,7 +869,7 @@ class Encuesta(models.Model):
     ###  30
 
     promueve_participacion_poblacion = MultiSelectField(
-        '¿Cómo promueve la participación de la población local en sus actividades?',
+        '¿Cómo promueve la participación de la población local en sus actividades? ',
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_PARTICIPACION_COMUNIDAD)
     ###  31
@@ -908,7 +904,7 @@ class Encuesta(models.Model):
 
     areas_temas_prioridad = MultiSelectField(
         ' ¿Qué áreas o temas sociales son prioritarios para su Entidad '
-        '(por ejemplo, educación, salud, alimentación, vivienda)?'
+        '(por ejemplo, educación, salud, alimentación, vivienda)? '
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_AREAS_TEMAS)
     otra_areas_temas_prioridad= models.CharField(
@@ -918,7 +914,7 @@ class Encuesta(models.Model):
 
     principales_inciativas_sociales = MultiSelectField(
         ' ¿Cuáles son las principales iniciativas o proyectos sociales que la '
-        'Entidad religiosa ha llevado a cabo en Colombia en los últimos años?'
+        'Entidad religiosa ha llevado a cabo en Colombia en los últimos años? '
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_INICIATIVAS_PROYECTOS)
 
@@ -928,7 +924,7 @@ class Encuesta(models.Model):
     ###  38
 
     como_finacia_proyectos = MultiSelectField(
-        '¿Cómo financia su Entidad religiosa sus proyectos sociales (donaciones, fondos propios, colaboraciones)?'
+        '¿Cómo financia su Entidad religiosa sus proyectos sociales (donaciones, fondos propios, colaboraciones)? '
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_FINANCIAMIENTO_PROYECTOS)
 
@@ -944,23 +940,23 @@ class Encuesta(models.Model):
     ###  40
 
     alcance_actividades_sociales = MultiSelectField(
-        '¿Cuál es el alcance geográfico de las actividades sociales de su Entidad en Colombia?'
+        '¿Cuál es el alcance geográfico de las actividades sociales de su Entidad en Colombia? '
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_ALCANCE_GEOGRAFICO)
     ###  41
 
     resultados_destacados = MultiSelectField(
         '¿Cuáles son los resultados o impactos más destacados de '
-        'las iniciativas sociales de su Entidad en Colombia?'
+        'las iniciativas sociales de su Entidad en Colombia? '
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_RESULTADOS_IMPACTOS)
 
-    otra_resultados_destacados= models.CharField(
+    otros_resultados_destacados= models.CharField(
         'Otros resultados', blank=True, null=True, max_length=255)
     ###  42
 
     como_interactua_comunidad = MultiSelectField(
-        '¿Cómo interactúa su Entidad religiosa con la comunidad local en Colombia?'
+        '¿Cómo interactúa su Entidad religiosa con la comunidad local en Colombia? '
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_INTERACCION_COMUNIDAD)
     ###  43
@@ -971,7 +967,7 @@ class Encuesta(models.Model):
     ###  44
 
     promueve_participacion_poblacion_sociales = MultiSelectField(
-        '¿Cómo promueve la participación de la población local en sus actividades sociales?'
+        '¿Cómo promueve la participación de la población local en sus actividades sociales? '
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_PARTICIPACION_POBLACION_SOCIALES)
     ###  45
@@ -990,21 +986,21 @@ class Encuesta(models.Model):
 
     cuales_actividades_ods = MultiSelectField(
         '¿Cuáles actividades o proyectos específicos ha llevado a cabo su organización para '
-        'contribuir a la consecución de los ODS en Colombia?'
+        'contribuir a la consecución de los ODS en Colombia? ' 
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_ACTIVIDADES_ODS)
     otra_cuales_actividades_ods = MultiSelectField(
-        'Otras actividades relacionadas con los ODS (por favor, especifique)'
+        'Otras actividades relacionadas con los ODS (por favor, especifique) '
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=TEMAS_CHOICES)
     ###  48
 
     enfoque_principal_servicios = MultiSelectField(
-        '¿Cuál es el enfoque principal de su Entidad religiosa en sus actividades y servicios?'
+        '¿Cuál es el enfoque principal de su Entidad religiosa en sus actividades y servicios? '
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_ENFOQUE_ENTIDAD)
-    otra_enfoque_principal_servicios = models.CharField(
-        'Otros resultados', blank=True, null=True, max_length=255)
+    otro_enfoque_principal_servicios = models.CharField(
+        'Otro enfoque principal', blank=True, null=True, max_length=255)
     ###  49
 
     es_lider_religioso= models.CharField(
@@ -1048,13 +1044,13 @@ class Encuesta(models.Model):
 
     beneficios_implementado_seguridad = MultiSelectField(
         '¿Qué tipo de beneficios o apoyo adicional le gustaría ver implementado o mejorado en '
-        'su Entidad religiosa en relación con la seguridad social?'
+        'su Entidad religiosa en relación con la seguridad social? '
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="",
         choices=BENEFICIOS_ADICIONALES_CHOICES)
 
-    otra_beneficios_implementado_seguridad = models.CharField(
-        'Otros resultados', blank=True, null=True, max_length=255)
+    otros_beneficios_implementado_seguridad = models.CharField(
+        'Otros beneficio implementado en seguridad social', blank=True, null=True, max_length=255)
     ###  57
 
     participa_actividades_humanitarias = models.CharField(
@@ -1075,7 +1071,7 @@ class Encuesta(models.Model):
 
     interactua_comunidad_humanitario = MultiSelectField(
         '¿¿Cómo interactúa su organización religiosa con la comunidad local en Colombia '
-        'en relación con el actuar humanitario?'
+        'en relación con el actuar humanitario? '
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=INTERACCION_COMUNIDAD_CHOICES)
     ###  61
@@ -1086,27 +1082,27 @@ class Encuesta(models.Model):
     ###  62
 
     promueve_participacion_humanitarias = MultiSelectField(
-        '¿Cómo promueve la participación de la población local en sus actividades humanitarias?'
+        '¿Cómo promueve la participación de la población local en sus actividades humanitarias? '
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=PARTICIPACION_COMUNITARIA_CHOICES)
     ###  63
 
     principales_desafios_humanitarios = MultiSelectField(
         '¿Cuáles son los principales desafíos que enfrenta su organización religiosa '
-        'en Colombia en la actualidad en relación con su actuación humanitaria?'
+        'en Colombia en la actualidad en relación con su actuación humanitaria? '
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=DESAFIOS_CHOICES)
     ###  64
 
     planes_futuras_humanitarias = MultiSelectField(
-        '¿Cuáles son sus planes o perspectivas futuras para continuar su labor humanitaria en Colombia?'
+        '¿Cuáles son sus planes o perspectivas futuras para continuar su labor humanitaria en Colombia? '
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=PLANES_PERSPECTIVAS_CHOICES)
     ###  65
 
     realiza_cuidados_comunidad = MultiSelectField(
         '¿Habitualmente realiza alguna de las siguientes actividades de cuidado '
-        'dirigidos a otros hogares o a su comunidad?'
+        'dirigidos a otros hogares o a su comunidad? '
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=ACTIVIDADES_CUIDADO_CHOICES)
 

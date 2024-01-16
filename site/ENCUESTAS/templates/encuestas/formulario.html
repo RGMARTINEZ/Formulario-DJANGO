@@ -1,6 +1,14 @@
 {% extends 'encuestas/base.html' %}
 {% block content %}
-    <h2>Formulario PNUD</h2>
+    <style>
+        p {
+            text-align: justify;
+        }
+    </style>
+    <h2>Formulario de Caracterización Entidades Religiosas en Colombia</h2>
+    <p>Informamos que los datos registrados a través de este formulario serán recolectados y conservados dentro de nuestra base de datos, cuyo uso se encuentra destinado exclusivamente al programa con el Ministerio del Interior.
+    De igual forma, comunicamos que los datos correspondientes a su información personal y profesional se encuentran almacenados en el servidor de los proyectos que hacen parte del Programa de las Naciones Unidas para el Desarrollo (PNUD) con altos estándares de seguridad, con el objetivo de evitar el acceso no autorizado por parte de terceros, a los datos ingresados en nuestra base de datos.
+        Para mayor información consultar nuestra política de protección de datos en los siguientes links: 1. https://archives.un.org/sites/archives.un.org/files/_un-principles-on-personal-data-protection-privacy-hlcm-2018.pdf 2. https://www.un.org/es/coronavirus/joint-statement-data-protection-and-privacy-covid-19-response</p>
     <form method="post" action="{% url 'crear_formulario' %}">
         {% csrf_token %}
         {% for field in form %}
