@@ -1,0 +1,27 @@
+{% extends 'encuestas/base.html' %}
+{% block content %}
+    <h2>Formulario PNUD</h2>
+    <form method="post" action="{% url 'crear_formulario' %}">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group {% if field.errors %} has-error{% endif %}">
+            <b>{{ forloop.counter }}. </b> {{ field.label_tag }}
+
+            {% if field.field.required %}
+                <b><span class="required-label" style="color: #001f3f;">(Campo obligatorio)</span></b>
+            {% endif %}
+
+            {{ field }}
+
+            {% if field.errors %}
+                <ul class="errorlist">
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    {% endfor %}
+        <button type="submit" class="form-control">Enviar</button>
+    </form>
+{% endblock %}

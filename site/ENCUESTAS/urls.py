@@ -1,6 +1,7 @@
-from django.urls import path
+from django.contrib import admin
+from django.urls import include, path
+from ENCUESTAS.views import FormularioCreateModelView
 
-from . import views
-
-app_name = "encuestas"
-urlpatterns = []
+urlpatterns = [
+    path("formulario/", FormularioCreateModelView.as_view(), name='crear_formulario'),
+]
