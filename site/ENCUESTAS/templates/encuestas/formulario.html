@@ -13,20 +13,22 @@
         {% csrf_token %}
         {% for field in form %}
         <div class="form-group {% if field.errors %} has-error{% endif %}">
-            <b>{{ forloop.counter }}. </b> {{ field.label_tag }}
+            {% if field.name not in fields_to_hidde %}
+                <b>{{ forloop.counter }}. </b> {{ field.label_tag }}
 
-            {% if field.field.required %}
-                <b><span class="required-label" style="color: #001f3f;">(Campo obligatorio)</span></b>
-            {% endif %}
+                {% if field.field.required %}
+                    <b><span class="required-label" style="color: #001f3f;">(Campo Obligatorio)</span></b>
+                {% endif %}
 
-            {{ field }}
+                {{ field }}
 
-            {% if field.errors %}
-                <ul class="errorlist">
-                    {% for error in field.errors %}
-                        <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
+                {% if field.errors %}
+                    <ul class="errorlist">
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             {% endif %}
         </div>
     {% endfor %}
