@@ -157,6 +157,22 @@ OPCIONES_CARACTER_CONFESIONAL = [
     ('OTRO', 'Otro'),
 ]
 
+###  22.1
+
+JUDAIMO_CHOICES = [
+    ('ASQUENAZIES', 'Asquenazíes'),
+    ('SEFARDIES', 'Sefardíes'),
+]
+
+###  22.2
+
+RAMAS_ISLAM_CHOICES = [
+    ('SUNITAS', 'Sunitas'),
+    ('CHIITAS', 'Chiitas'),
+]
+
+###  22.3
+
 OPCIONES_DENOMINACION_RELIGIOSA = [
     ('CATOLICA_ROMANA', 'Católica Romana'),
     ('PRESBITERIANAS', 'Presbiterianas'),
@@ -174,6 +190,22 @@ OPCIONES_DENOMINACION_RELIGIOSA = [
     ('TESTIGOS_DE_JEHOVA', 'Testigos de Jehová'),
     ('OTRA', 'Otra'),
 ]
+
+###  22.4
+
+TRADICIONES_BUDISTAS_CHOICES = [
+    ('TIBETANO', 'Tibetano'),
+    ('SOTO_ZEN', 'Soto Zen'),
+    ]
+
+###  22.5
+
+TRADICIONES_HINDUISTAS_CHOICES = [
+    ('VISNUISMO', 'Visnuismo'),
+    ('KRISNAISMO', 'Krisnaísmo'),
+    ('SHIVAISMO', 'Shivaísmo'),
+]
+
 
 ###  23.
 OPCIONES_REGISTRO_ENTIDAD_RELIGIOSA = [
@@ -390,6 +422,65 @@ OPCIONES_OFERTA_SERVICIOS = [
     ('NO_OFRECE_SERVICIOS', 'No ofrecemos servicios religiosos en Colombia.'),
     ('NO_SEGURO_NO_APLICABLE', 'No estoy seguro/No aplicable.'),
 ]
+
+###  43.1 
+
+OPCIONES_OFERTA_SERVICIOS_DIFICULTADES = [
+    ('RUIDO_CON_VECINOS', 'Diferencias con vecinos por ruido.'),
+    ('DANIOS_FISICOS_BIENES_ER', 'Daños físicos a los bienes de la ER'),
+    ('CONTROVERSIAS_PARQUEO', 'Controversias por zonas de parqueo para fieles/asociados.'),
+    ('DOMICILIO_ER', 'Dificultad para establecer el domicilio de su ER'),
+    ('DISCRIMINACION_INTOLERANCIA_RELIGIOSA', 'Discriminación o intolerancia religiosa.'),
+    ('SIN_DIFICULTADES', 'No se han encontrado dificultades'),
+]
+
+###  43.2
+
+OPCIONES_OFERTA_SERVICIOS_TEMAS = [
+    ('EDUCACION', 'Educación'),
+    ('DISCAPACIDAD', 'Discapacidad'),
+    ('ACCION_COMUNAL', 'Acción comunal'),
+    ('VICTIMAS', 'Víctimas'),
+    ('JOVENES', 'Jóvenes'),
+    ('MUJERES', 'Mujeres'),
+    ('INFANCIA_ADOLESCENCIA', 'Infancia y adolescencia'),
+    ('POBLACIONES_VULNERABLES', 'Poblaciones vulnerables'),
+    ('PROPIEDAD_HORIZONTAL', 'Propiedad horizontal'),
+    ('GRUPOS_ETNICOS', 'Grupos étnicos'),
+    ('PLANEACION_PARTICIPATIVA', 'Planeación participativa'),
+    ('PAZ', 'Paz'),
+    ('PARTICIPACION_CIUDADANA', 'Participación ciudadana'),
+    ('PARTICIPACION_POLITICA', 'Participación política'),
+]
+
+
+###  43.3
+
+OPCIONES_OFERTA_SERVICIOS_ER = [
+    ('DISCRIMINACION_RELIGIOSA', 'Discriminación religiosa'),
+    ('DESCONOCIMIENTO_INSTANCIAS', 'Desconocimiento de las instancias existentes'),
+    ('FALTA_FORMACION_TECNICA', 'Falta de formación técnica'),
+    ('NO_INTERES_EN_PARTICIPAR', 'No tiene interés en participar'),
+    ('SIN_DIFICULTADES', 'No ha tenido dificultades'),
+]
+
+
+###  43.4
+
+OPCIONES_OFERTA_SERVICIOS_LIDERES = [
+    ('LIDERAZGO', 'Formación en liderazgo'),
+    ('GESTION_DE_PAZ', 'Formación en gestión de paz'),
+    ('NORMATIVIDAD_RELIGIOSA', 'Formación en normatividad religiosa'),
+    ('FORMULACION_DE_PROYECTOS_SOCIALES', 'Formulación y presentación de proyectos sociales'),
+    ('TEMATICA_TRIBUTARIA', 'Formación en temática tributaria'),
+    ('GERENCIA_Y_GESTION', 'Gerencia y Gestión'),
+    ('FORTALECIMIENTO_ORGANIZACIONAL_ADMINISTRATIVO', 'Fortalecimiento organizacional y administrativo'),
+    ('OTRA', 'Otra (s)'),
+    ('NINGUNO', 'Ninguno'),
+]
+
+
+
 ###  44
 
 
@@ -820,6 +911,10 @@ class Encuesta(models.Model):
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_CARACTER_CONFESIONAL)
     otro_caracter_confesional = models.CharField(
         'Otro caracter confesional', blank=True, null=True, max_length=255)
+     ###  22.1
+    caracter_confesinal_seleccion = models.CharField(
+        '¿A partir de su respuesta anterior, seleccione la que corresponde? ',
+        blank=True, null=True, max_length=255, default="", choices=JUDAIMO_CHOICES)
     ###  23
     entidad_registrada = models.CharField(
         ' ¿La Entidad religiosa está registrada en Colombia?',
@@ -835,17 +930,49 @@ class Encuesta(models.Model):
         '¿La Entidad religiosa tiene organizaciones del sector, '
         'como fundaciones o colegios religiosos, registradas en Colombia?',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_ORGANIZACIONES_REGISTRADAS)
+    ###  25.1
+    tiene_organizaciones_sector_nombre= models.CharField(
+        'Nombre de la organización (fundaciones o colegios religiosos)', blank=True, null=True, max_length=255)
+    ###  25.2
+    tiene_organizaciones_sector_direccion= models.CharField(
+        'Dirección (fundaciones o colegios religiosos)', blank=True, null=True, max_length=255)   
+    ###  25.3
+    tiene_organizaciones_sector_correo= models.CharField(
+        'Correo Electrónico (fundaciones o colegios religiosos)', blank=True, null=True, max_length=255) 
+    ###  25.4
+    tiene_organizaciones_sector_telefono= models.CharField(
+        'Teléfono (fundaciones o colegios religiosos', blank=True, null=True, max_length=255) 
+    ###  25.5
+    tiene_organizaciones_sector_nit= models.CharField(
+        'NIT (fundaciones o colegios religiosos)', blank=True, null=True, max_length=255)              
     ###  26
     participa_actividades_caridad= models.CharField(
         '¿La Entidad religiosa participa en actividades de caridad o '
         'servicio social en Colombia? Si es así, describa estas actividades.',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_PARTICIPACION_CARIDAD)
+    
     ###  26.1
-    otros_departamentos_actividades= models.CharField(
-        '¿Qué otros departamentos tiene actividades?', blank=True, null=True, max_length=255)
+    participa_actividades_caridad_departamento= models.CharField(
+        '¿En cuál departamento?', blank=True, null=True, max_length=255)
     ###  26.2
-    otros_municipios_actividades= models.CharField(
-        '¿Qué otros municipios tiene actividades?', blank=True, null=True, max_length=255)
+    participa_actividades_caridad_departamento_otro= models.CharField(
+        '¿Qué otros departamentos tiene actividades?', blank=True, null=True, max_length=255)   
+    ###  26.3
+    participa_actividades_carida_municipio= models.CharField(
+        '¿En cuál municipio?', blank=True, null=True, max_length=255) 
+    ###  26.4
+    participa_actividades_carida_municipio_otro= models.CharField(
+        '¿Qué otros municipios tiene actividades?', blank=True, null=True, max_length=255) 
+    ###  26.5
+    participa_actividades_caridad_localidad= models.CharField(
+        '¿En cuál localidad?', blank=True, null=True, max_length=255)    
+    ###  26.5
+    participa_actividades_caridad_telefono= models.CharField(
+        'Teléfono', blank=True, null=True, max_length=255)   
+    ###  26.7
+    participa_actividades_caridad_descripcion= models.CharField(
+        'Descríbalas', blank=True, null=True, max_length=255)  
+
     ###  27
 
     colabora_proyectos_sociales = MultiSelectField(
@@ -853,6 +980,18 @@ class Encuesta(models.Model):
         'religiosas en proyectos o iniciativas sociales en Colombia?. '
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_COLABORACION)
+    ###  27.1
+    colabora_proyectos_sociales_telefono= models.CharField(
+        'Teléfono fijo', blank=True, null=True, max_length=255)
+    ###  27.2
+    colabora_proyectos_sociales_celular= models.CharField(
+        'Celular', blank=True, null=True, max_length=255)   
+    ###  27.3
+    colabora_proyectos_sociales_correo= models.CharField(
+        'Correo electrónico de la Organización del Sector Religioso', blank=True, null=True, max_length=255) 
+    ###  27.4
+    colabora_proyectos_sociale_representan= models.CharField(
+        'Nombre del Representante Legal de la Organización del Sector Religioso', blank=True, null=True, max_length=255) 
 
     ###  28
 
@@ -866,6 +1005,9 @@ class Encuesta(models.Model):
         '¿Ofrece servicios religiosos o de apoyo a grupos específicos poblaciones '
         'dentro de la sociedad colombiana?',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_SERVICIOS)
+    ###  29.1
+    ofrece_servicios_poblaciones_otro= models.CharField(
+        '¿Cuáles son los grupos?', blank=True, null=True, max_length=255)     
     ###  30
 
     promueve_participacion_poblacion = MultiSelectField(
@@ -879,6 +1021,9 @@ class Encuesta(models.Model):
         'la comunidad o la sociedad colombiana en términos '
         'de valores, ética y cultura?',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_IMPACTO_COMUNIDAD)
+    ###  31.1
+    impacto_comunidad_valores_cuales= models.CharField(
+        '¿Cuáles?', blank=True, null=True, max_length=255)        
     ###  32
 
     lideres_participan_instancia = models.CharField(
@@ -937,6 +1082,9 @@ class Encuesta(models.Model):
         '¿Tiene la Entidad religiosa alianzas con otras instituciones u '
         'ONGs para abordar temas sociales en Colombia?',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_ALIANZAS)
+    ###  39.1
+    tiene_alianzas_ongs_cuales= models.CharField(
+        '¿Cuáles?', blank=True, null=True, max_length=255)       
     ###  40
 
     alcance_actividades_sociales = MultiSelectField(
@@ -964,6 +1112,29 @@ class Encuesta(models.Model):
     ofrece_servicios_sociedad = models.CharField(
         '¿Ofrece servicios religiosos o de apoyo a grupos específicos dentro de la sociedad colombiana?',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_OFERTA_SERVICIOS)
+    
+    ###  43.1
+    ofrece_servicios_sociedad = MultiSelectField(
+        'Ha encontrado dificultades para ejercer la participación ciudadana, como Entidades Religiosas, lo cual fue consultado por los líderes en las instancias dispuestas para tal fin por: '
+        '(puede seleccionar varios)',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_OFERTA_SERVICIOS_DIFICULTADES)
+    ###  43.2
+    ofrece_servicios_sociedad = MultiSelectField(
+        'hace parte de alguna mesa técnica o temática, Comité, Consejo o Red donde se discutan planes, programas y/o proyectos de interés público o general, tales como:'
+        '(puede seleccionar varios)',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_OFERTA_SERVICIOS_TEMAS)
+    ###  43.3
+    ofrece_servicios_sociedad = MultiSelectField(
+        'Ha encontrado dificultades para ejercer la participación ciudadana, como ER , en las instancias dispuestas para tal fin por:'
+        '(puede seleccionar varios)',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_OFERTA_SERVICIOS_ER)
+    ###  43.4
+    ofrece_servicios_sociedad = MultiSelectField(
+        ' ¿Líderes de la Entidades Religiosas han recibido capacitación en liderazgo e incidencia pública por parte de los gobiernos territoriales, gobierno nacional, ONG o empresa privada?'
+        '(puede seleccionar varios)',
+        blank=True, null=True, max_length=255, default="", choices=OPCIONES_OFERTA_SERVICIOS_LIDERES)
+    ofrece_servicios_sociedad_otra= models.CharField(
+        'Otra', blank=True, null=True, max_length=255)            
     ###  44
 
     promueve_participacion_poblacion_sociales = MultiSelectField(
