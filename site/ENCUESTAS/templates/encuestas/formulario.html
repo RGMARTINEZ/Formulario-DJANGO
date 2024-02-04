@@ -1,37 +1,39 @@
 {% extends 'encuestas/base.html' %}
 {% block content %}
-    <style>
-        p {
-            text-align: justify;
-        }
-    </style>
-    <h2>Formulario de Caracterización Entidades Religiosas en Colombia</h2>
-    <p>Informamos que los datos registrados a través de este formulario serán recolectados y conservados dentro de nuestra base de datos, cuyo uso se encuentra destinado exclusivamente al programa con el Ministerio del Interior.
-    De igual forma, comunicamos que los datos correspondientes a su información personal y profesional se encuentran almacenados en el servidor de los proyectos que hacen parte del Programa de las Naciones Unidas para el Desarrollo (PNUD) con altos estándares de seguridad, con el objetivo de evitar el acceso no autorizado por parte de terceros, a los datos ingresados en nuestra base de datos.
-        Para mayor información consultar nuestra política de protección de datos en los siguientes links: 1. https://archives.un.org/sites/archives.un.org/files/_un-principles-on-personal-data-protection-privacy-hlcm-2018.pdf 2. https://www.un.org/es/coronavirus/joint-statement-data-protection-and-privacy-covid-19-response</p>
-    <form method="post" action="{% url 'crear_formulario' %}">
-        {% csrf_token %}
-        {% for field in form %}
-        <div class="form-group {% if field.errors %} has-error{% endif %}">
-            {% if field.name not in fields_to_hidde %}
-                <b>{{ forloop.counter }}. </b> {{ field.label_tag }}
 
-                {% if field.field.required %}
-                    <b><span class="required-label" style="color: #001f3f;">(Campo Obligatorio)</span></b>
-                {% endif %}
+<section class="section faq">
+    <div class="row">
+       <div class="col-lg-12">
+          <div class="card basic">
+             <div class="card-body">
+                <h5 class="card-title fs-1 text">Formulario de Caracterización Entidades Religiosas en Colombia</h5>
+                <p class="fs-5 text">Informamos que los datos registrados a través de este formulario serán recolectados y conservados dentro de nuestra base de datos, cuyo uso se encuentra destinado exclusivamente al programa con el Ministerio del Interior.</p>
+                <p class="fs-5 text">De igual forma, comunicamos que los datos correspondientes a su información personal y profesional se encuentran almacenados en el servidor de los proyectos que hacen parte del Programa de las Naciones Unidas para el Desarrollo (PNUD) con altos estándares de seguridad, con el objetivo de evitar el acceso no autorizado por parte de terceros, a los datos ingresados en nuestra base de datos.</p>
+                <p class="fs-5 text">Para mayor información consultar nuestra política de protección de datos en los siguientes links: <br> <br> <a href="https://archives.un.org/sites/archives.un.org/files/_un-principles-on-personal-data-protection-privacy-hlcm-2018.pdf" target="_blank">1. https://archives.un.org/sites/archives.un.org/files/_un-principles-on-personal-data-protection-privacy-hlcm-2018.pdf</a>  <br> <a href="https://www.un.org/es/coronavirus/joint-statement-data-protection-and-privacy-covid-19-response" target="_blank">2. https://www.un.org/es/coronavirus/joint-statement-data-protection-and-privacy-covid-19-response</a> </p>
+                <form method="post" action="{% url 'crear_formulario' %}">
+                   {% csrf_token %}
+                   {% for field in form %}
+                   <div class=" {% if field.errors %} has-error{% endif %}">
+                      {% if field.name not in fields_to_hidde %}
+                      <div class="row mb-3">
+                         <label for="inputText" class="col-sm-12 col-form-label">
+                            <h6><b>{{ forloop.counter }}. </b> {{ field.label_tag }}</h6>
+                         </label>
+                      </div>
+                      {{ field }} 
+                      {% endif %}
+                   </div>
+                   {% endfor %}
+                   <div class="row mb- mt-3">
+                      <div for="inputText" class="col-sm-12 col-form-label text-center">
+                         <button type="submit" class="btn btn-primary">Enviar Encuesta</button>
+                      </div>
+                   </div>
+                </form>
+             </div>
+          </div>
+       </div>
+    </div>
+ </section>
 
-                {{ field }}
-
-                {% if field.errors %}
-                    <ul class="errorlist">
-                        {% for error in field.errors %}
-                            <li>{{ error }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            {% endif %}
-        </div>
-    {% endfor %}
-        <button type="submit" class="form-control">Enviar</button>
-    </form>
 {% endblock %}

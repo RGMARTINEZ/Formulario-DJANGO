@@ -325,22 +325,22 @@ class Encuesta(models.Model):
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_OFERTA_SERVICIOS)
     
     ###  43.1
-    ofrece_servicios_sociedad = MultiSelectField(
+    ofrece_servicios_sociedad_dificultades = MultiSelectField(
         'Ha encontrado dificultades para ejercer la participación ciudadana, como Entidades Religiosas, lo cual fue consultado por los líderes en las instancias dispuestas para tal fin por: '
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_OFERTA_SERVICIOS_DIFICULTADES)
     ###  43.2
-    ofrece_servicios_sociedad = MultiSelectField(
+    ofrece_servicios_sociedad_tecnica = MultiSelectField(
         'hace parte de alguna mesa técnica o temática, Comité, Consejo o Red donde se discutan planes, programas y/o proyectos de interés público o general, tales como:'
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_OFERTA_SERVICIOS_TEMAS)
     ###  43.3
-    ofrece_servicios_sociedad = MultiSelectField(
+    ofrece_servicios_sociedad_ciudadana = MultiSelectField(
         'Ha encontrado dificultades para ejercer la participación ciudadana, como ER , en las instancias dispuestas para tal fin por:'
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_OFERTA_SERVICIOS_ER)
     ###  43.4
-    ofrece_servicios_sociedad = MultiSelectField(
+    ofrece_servicios_sociedad_lideres = MultiSelectField(
         ' ¿Líderes de la Entidades Religiosas han recibido capacitación en liderazgo e incidencia pública por parte de los gobiernos territoriales, gobierno nacional, ONG o empresa privada?'
         '(puede seleccionar varios)',
         blank=True, null=True, max_length=255, default="", choices=OPCIONES_OFERTA_SERVICIOS_LIDERES)
