@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from ENCUESTAS.models import Encuesta
 from ENCUESTAS.forms import EncuestaModelForm
 from django.utils import timezone
+from collections import Counter
 
 
 class PaginaInicial(TemplateView):
@@ -23,6 +24,12 @@ class PaginaInicial(TemplateView):
         context['total_encuestas'] = Encuesta.objects.count()
         context['total_ultimos_7_dias'] = encuestas_ultimos_7_dias
         context['total_ultimos_30_dias'] = encuestas_ultimos_30_dias
+        data_poblacion_entidad = list(Encuesta.objects.all().values_list("poblacion_entidad", flat=True))
+
+        dictionary_counts = Counter(map(str, data_poblacion_entidad))
+        # Convert the Counter object to a dictionary
+        dictionary_counts_dict_poblacion_entidad = dict(dictionary_counts)
+        context['reporte_poblacion_entidad'] = dictionary_counts_dict_poblacion_entidad
 
         return context
 
