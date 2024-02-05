@@ -99,6 +99,37 @@
 
   <!-- Template Main JS File -->
   <script src="{% static 'js/main.js' %}"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+  $(document).ready(function(){
+      // Attach a change event to the select field
+      function handleCustomGroupDisplay(selector, option_value, field_name_group_to_show_hide, type_of_field) {
+        // La variable selector seria el campo en el que cambian las opciones.
+        $(selector).on('change', function() {
+            // Get the selected option value
+            var selectedValue = $(this).val();
+            // Show or hide the input field based on the selected option
+            if (selectedValue === option_value) {
+                $("#customgroup-"+ field_name_group_to_show_hide).show();
+            } else {
+                $("#customgroup-"+ field_name_group_to_show_hide).hide();
+                if (type_of_field === "textinput"){
+                  // Para limpiar el campo de tipo textinput cuando el usuario lo haya llenado
+                  // Puedes agregar mas reglas para que deseleccione un checkbox o algo asi
+                  // En caso que lo necesites
+                  $("#customgroup-"+ field_name_group_to_show_hide).val('')
+                }
+            }
+        });
+      }
+      handleCustomGroupDisplay('select[name="zona_entidad_religiosa"]', 'OTRA', 'otra_zona_entidad');
+  });
+</script>
+<style>
+  .hidden-field {
+    display: none;
+}
+</style>
 
 </body>
 

@@ -10,7 +10,7 @@ class PaginaInicial(TemplateView):
 
 
 
-fields_to_hidde = [
+fields_to_hide = [
     "otra_zona_entidad",
     "otra_poblacion_entidad",
     "otros_grupos_personas",
@@ -33,8 +33,6 @@ class FormularioCreateModelView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(FormularioCreateModelView, self).get_context_data(**kwargs)
-
         # Add additional context data here
-        context['fields_to_hidde'] = fields_to_hidde
-
+        context['fields_to_hide'] = fields_to_hide
         return context

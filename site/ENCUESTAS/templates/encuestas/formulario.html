@@ -1,37 +1,43 @@
 {% extends 'encuestas/base.html' %}
+{% load custom_filters %}
 {% block content %}
-    <style>
-        p {
-            text-align: justify;
-        }
-    </style>
-    <h2>Formulario de Caracterización Entidades Religiosas en Colombia</h2>
-    <p>Informamos que los datos registrados a través de este formulario serán recolectados y conservados dentro de nuestra base de datos, cuyo uso se encuentra destinado exclusivamente al programa con el Ministerio del Interior.
+<style>
+    p {
+        text-align: justify;
+    }
+</style>
+<h2>Formulario de Caracterización Entidades Religiosas en Colombia</h2>
+<p>Informamos que los datos registrados a través de este formulario serán recolectados y conservados dentro de nuestra base de datos, cuyo uso se encuentra destinado exclusivamente al programa con el Ministerio del Interior.
     De igual forma, comunicamos que los datos correspondientes a su información personal y profesional se encuentran almacenados en el servidor de los proyectos que hacen parte del Programa de las Naciones Unidas para el Desarrollo (PNUD) con altos estándares de seguridad, con el objetivo de evitar el acceso no autorizado por parte de terceros, a los datos ingresados en nuestra base de datos.
-        Para mayor información consultar nuestra política de protección de datos en los siguientes links: 1. https://archives.un.org/sites/archives.un.org/files/_un-principles-on-personal-data-protection-privacy-hlcm-2018.pdf 2. https://www.un.org/es/coronavirus/joint-statement-data-protection-and-privacy-covid-19-response</p>
-    <form method="post" action="{% url 'crear_formulario' %}">
-        {% csrf_token %}
+    Para mayor información consultar nuestra política de protección de datos en los siguientes links: 1. https://archives.un.org/sites/archives.un.org/files/_un-principles-on-personal-data-protection-privacy-hlcm-2018.pdf 2. https://www.un.org/es/coronavirus/joint-statement-data-protection-and-privacy-covid-19-response</p>
+<form method="post" action="{% url 'crear_formulario' %}">
+    {% csrf_token %}
+
         {% for field in form %}
-        <div class="form-group {% if field.errors %} has-error{% endif %}">
-            {% if field.name not in fields_to_hidde %}
-                <b>{{ forloop.counter }}. </b> {{ field.label_tag }}
+        <div class="form-group {% if field.errors %} has-error{% endif %} {% if field.name in fields_to_hide %}hidden-field{% endif %}" id="customgroup-{{ field.name }}">
+            {% if field.name not in fields_to_hide %}
+                <b>{{ forloop.counter }}</b> {{ field.label_tag }}
+            {% else %}
+                {{ field.label_tag }}
+            {% endif %}
 
-                {% if field.field.required %}
-                    <b><span class="required-label" style="color: #001f3f;">(Campo Obligatorio)</span></b>
-                {% endif %}
+            {% if field.field.required %}
+                <b><span class="required-label" style="color: #001f3f;">(Campo Obligatorio)</span></b>
+            {% endif %}
 
-                {{ field }}
+            {{ field }}
 
-                {% if field.errors %}
-                    <ul class="errorlist">
-                        {% for error in field.errors %}
-                            <li>{{ error }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
+            {% if field.errors %}
+                <ul class="errorlist">
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
             {% endif %}
         </div>
-    {% endfor %}
-        <button type="submit" class="form-control">Enviar</button>
-    </form>
+        {% endfor %}
+
+    <button type="submit" class="form-control">Enviar</button>
+</form>
 {% endblock %}
+

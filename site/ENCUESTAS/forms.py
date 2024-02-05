@@ -3,6 +3,20 @@ from django.shortcuts import render
 from ENCUESTAS.models import Encuesta
 
 
+fields_to_hide = [
+    "otra_zona_entidad",
+    "otra_poblacion_entidad",
+    "otros_grupos_personas",
+    "otra_discapacidad",
+    "otro_idioma",
+    "otra_actividad",
+    "otro_servicio",
+    "otro_caracter_confesional",
+    "otros_resultados_destacados",
+    "otro_enfoque_principal_servicios",
+    "otros_beneficios_implementado_seguridad"
+]
+
 class CustomCheckboxSelectMultiple(forms.CheckboxSelectMultiple):
     def render(self, name, value, attrs=None, choices=()):
         # Override the rendering to apply form-check-input class
@@ -24,7 +38,3 @@ class EncuestaModelForm(forms.ModelForm):
         for field_name, field in self.fields.items():
             if not isinstance(field.widget, forms.CheckboxSelectMultiple):
                 field.widget.attrs['class'] = 'form-control'
-        # self.fields['fields_to_hide'].initial = fields_to_hide
-
-
-
