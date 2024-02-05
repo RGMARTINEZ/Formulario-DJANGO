@@ -27,13 +27,13 @@ class Encuesta(models.Model):
     ###  7.
     celular_extra = models.CharField(
         'Si tiene otro número de celular o número fijo de contacto escríbalo aquí',
-        blank=False, null=True)  # modificado
+        blank=True, null=True)  # modificado
     ###  8.
     zona_entidad_religiosa = models.CharField(
         '¿En que zona se encuentra ubicada la entidad religiosa que representa?',
         blank=False, null=False, max_length=255, default="", choices=ZONAS_ENTIDADES)
     otra_zona_entidad = models.CharField(
-        'Otro tipo de zona seleccionada', blank=False, null=True, max_length=255)
+        'Otro tipo de zona seleccionada', blank=True, null=True, max_length=255)
     ###  9.
     anos_activa_entidad = models.PositiveIntegerField(
         '¿Cuántos años lleva activa la entidad religiosa a la que representa?', blank=False, null=False)
@@ -43,13 +43,13 @@ class Encuesta(models.Model):
         '¿Qué población atienden y ayuda su entidad religiosa? '
         '(puede marcar varias)', blank=False, null=False, max_length=255, default="", choices=TIPO_POBLACION)
     otra_poblacion_entidad = models.CharField(
-        'Otro tipo de población seleccionado', blank=False, null=True, max_length=255)
+        'Otro tipo de población seleccionado', blank=True, null=True, max_length=255)
     ###  11.
     grupos_personas = MultiSelectField(
         'Dentro del siguiente grupo de personas, ¿Cuál atiende y beneficia su entidad religiosa? '
         '(puede marcar varias)', blank=False, null=False, max_length=255, default="", choices=GRUPOS_PERSONAS)
     otros_grupos_personas = models.CharField(
-        'Otro grupo de personas seleccionado', blank=False, null=True, max_length=255)
+        'Otro grupo de personas seleccionado', blank=True, null=True, max_length=255)
     ###  12.
     atiende_poblacion_discapacitada = models.CharField(
         '¿Atiende población en la entidad religiosa en condición de discapacidad?',
@@ -60,7 +60,7 @@ class Encuesta(models.Model):
         'tiene la población que atiende su entidad religiosa?',
         blank=False, null=True, max_length=255, default="", choices=OPCIONES_CONDICION_DISCAPACIDAD)
     otra_discapacidad = models.CharField(
-        'Otro discapacidad seleccionada', blank=False, null=True, max_length=255)
+        'Otro discapacidad seleccionada', blank=True, null=True, max_length=255)
     ###  13.
     grupo_demografico = MultiSelectField(
         'De acuerdo a la edad, ¿Cuál es el grupo demográfico principal al que sirve su Entidad religiosa? '
@@ -85,28 +85,28 @@ class Encuesta(models.Model):
         '¿Cuál es el idioma/dialecto principal de su comunidad religiosa?',
         blank=False, null=True, max_length=255, default="", choices=OPCIONES_IDIOMAS)
     otro_idioma = models.CharField(
-        'Otro idioma', blank=False, null=True, max_length=255)
+        'Otro idioma', blank=True, null=True, max_length=255)
     ###  17.
     tipo_actividad = MultiSelectField(
         '¿Qué tipo de actividad o programas realiza su Entidad religiosa '
         'para interactuar con la comunidad en general?',
         blank=False, null=True, max_length=255, default="", choices=OPCIONES_TIPO_ACTIVIDAD)
     otra_actividad = models.CharField(
-        'Otra actividad', blank=False, null=True, max_length=255)
+        'Otra actividad', blank=True, null=True, max_length=255)
     ###  18.
     tipo_servicios = MultiSelectField(
         '¿Qué tipo de servicios sociales ofrecen a la población local? '
         '(puede seleccionar varios)',
         blank=False, null=True, max_length=255, default="", choices=OPCIONES_TIPO_SERVICIOS)
     otro_servicio = models.CharField(
-        'Otro servicio', blank=False, null=True, max_length=255)
+        'Otro servicio', blank=True, null=True, max_length=255)
     ###  19.
     participacion_poblacion = MultiSelectField(
         '¿Cómo se promueve la participación de la población en las actividades de su Entidad religiosa? '
         '(puede seleccionar varios)',
         blank=False, null=True, max_length=255, default="", choices=OPCIONES_PARTICIPACION_POBLACION)
     otra_participacion= models.CharField(
-        'Otra participacion', blank=False, null=True, max_length=255)
+        'Otra participacion', blank=True, null=True, max_length=255)
     ###  20.
     colabora_proyectos_comunitarios = models.CharField(
         '¿Ha colaborado su Entidad religiosa con otras organizaciones no religiosas en proyectos comunitarios?',
@@ -121,7 +121,7 @@ class Encuesta(models.Model):
         '¿Cuál es carácter confesional específico de su Entidad religiosa ?',
         blank=False, null=True, max_length=255, default="", choices=OPCIONES_CARACTER_CONFESIONAL)
     otro_caracter_confesional = models.CharField(
-        'Otro caracter confesional', blank=False, null=True, max_length=255)
+        'Otro caracter confesional', blank=True, null=True, max_length=255)
      ###  22.1
     caracter_confesinal_seleccion = models.CharField(
         '¿A partir de su respuesta anterior, seleccione la que corresponde? ',
@@ -135,7 +135,7 @@ class Encuesta(models.Model):
         '¿Qué tipo de vocación tiene la Entidad religiosa en Colombia?',
         blank=False, null=True, max_length=255, default="", choices=OPCIONES_TIPO_VOCACION)
     otra_vocacion= models.CharField(
-        'Otra vocación', blank=False, null=True, max_length=255)
+        'Otra vocación', blank=True, null=True, max_length=255)
     ###  25
     tiene_organizaciones_sector = models.CharField(
         '¿La Entidad religiosa tiene organizaciones del sector, '
@@ -149,13 +149,13 @@ class Encuesta(models.Model):
         'Dirección (fundaciones o colegios religiosos)', blank=False, null=True, max_length=255)   
     ###  25.3
     tiene_organizaciones_sector_correo= models.CharField(
-        'Correo Electrónico (fundaciones o colegios religiosos)', blank=False, null=True, max_length=255) 
+        'Correo Electrónico (fundaciones o colegios religiosos)', blank=True, null=True, max_length=255)
     ###  25.4
     tiene_organizaciones_sector_telefono= models.CharField(
-        'Teléfono (fundaciones o colegios religiosos', blank=False, null=True, max_length=255) 
+        'Teléfono (fundaciones o colegios religiosos', blank=True, null=True, max_length=255)
     ###  25.5
     tiene_organizaciones_sector_nit= models.CharField(
-        'NIT (fundaciones o colegios religiosos)', blank=False, null=True, max_length=255)              
+        'NIT (fundaciones o colegios religiosos)', blank=True, null=True, max_length=255)
     ###  26
     participa_actividades_caridad= models.CharField(
         '¿La Entidad religiosa participa en actividades de caridad o '
@@ -167,22 +167,22 @@ class Encuesta(models.Model):
         '¿En cuál departamento?', blank=False, null=True, max_length=255)
     ###  26.2
     participa_actividades_caridad_departamento_otro= models.CharField(
-        '¿Qué otros departamentos tiene actividades?', blank=False, null=True, max_length=255)   
+        '¿Qué otros departamentos tiene actividades?', blank=True, null=True, max_length=255)
     ###  26.3
     participa_actividades_carida_municipio= models.CharField(
         '¿En cuál municipio?', blank=False, null=True, max_length=255) 
     ###  26.4
     participa_actividades_carida_municipio_otro= models.CharField(
-        '¿Qué otros municipios tiene actividades?', blank=False, null=True, max_length=255) 
+        '¿Qué otros municipios tiene actividades?', blank=True, null=True, max_length=255)
     ###  26.5
     participa_actividades_caridad_localidad= models.CharField(
-        '¿En cuál localidad?', blank=False, null=True, max_length=255)    
+        '¿En cuál localidad?', blank=True, null=True, max_length=255)
     ###  26.5
     participa_actividades_caridad_telefono= models.CharField(
-        'Teléfono', blank=False, null=True, max_length=255)   
+        'Teléfono', blank=True, null=True, max_length=255)
     ###  26.7
     participa_actividades_caridad_descripcion= models.CharField(
-        'Descríbalas', blank=False, null=True, max_length=255)  
+        'Descríbalas', blank=True, null=True, max_length=255)
 
     ###  27
 
@@ -193,13 +193,13 @@ class Encuesta(models.Model):
         blank=False, null=True, max_length=255, default="", choices=OPCIONES_COLABORACION)
     ###  27.1
     colabora_proyectos_sociales_telefono= models.CharField(
-        'Teléfono fijo', blank=False, null=True, max_length=255)
+        'Teléfono fijo', blank=True, null=True, max_length=255)
     ###  27.2
     colabora_proyectos_sociales_celular= models.CharField(
-        'Celular', blank=False, null=True, max_length=255)   
+        'Celular', blank=True, null=True, max_length=255)
     ###  27.3
     colabora_proyectos_sociales_correo= models.CharField(
-        'Correo electrónico de la Organización del Sector Religioso', blank=False, null=True, max_length=255) 
+        'Correo electrónico de la Organización del Sector Religioso', blank=True, null=True, max_length=255)
     ###  27.4
     colabora_proyectos_sociale_representan= models.CharField(
         'Nombre del Representante Legal de la Organización del Sector Religioso', blank=False, null=True, max_length=255) 
@@ -218,7 +218,7 @@ class Encuesta(models.Model):
         blank=False, null=True, max_length=255, default="", choices=OPCIONES_SERVICIOS)
     ###  29.1
     ofrece_servicios_poblaciones_otro= models.CharField(
-        '¿Cuáles son los grupos?', blank=False, null=True, max_length=255)     
+        '¿Cuáles son los grupos?', blank=True, null=True, max_length=255)
     ###  30
 
     promueve_participacion_poblacion = MultiSelectField(
@@ -234,7 +234,7 @@ class Encuesta(models.Model):
         blank=False, null=True, max_length=255, default="", choices=OPCIONES_IMPACTO_COMUNIDAD)
     ###  31.1
     impacto_comunidad_valores_cuales= models.CharField(
-        '¿Cuáles?', blank=False, null=True, max_length=255)        
+        '¿Cuáles?', blank=True, null=True, max_length=255)
     ###  32
 
     lideres_participan_instancia = models.CharField(
@@ -264,7 +264,7 @@ class Encuesta(models.Model):
         '(puede seleccionar varios)',
         blank=False, null=True, max_length=255, default="", choices=OPCIONES_AREAS_TEMAS)
     otra_areas_temas_prioridad= models.CharField(
-        'Otra áreas', blank=False, null=True, max_length=255)
+        'Otra áreas', blank=True, null=True, max_length=255)
 
     ###  37
 
@@ -275,7 +275,7 @@ class Encuesta(models.Model):
         blank=False, null=True, max_length=255, default="", choices=OPCIONES_INICIATIVAS_PROYECTOS)
 
     otra_principales_inciativas_sociales= models.CharField(
-        'Otra iniciativas', blank=False, null=True, max_length=255)
+        'Otra iniciativas', blank=True, null=True, max_length=255)
 
     ###  38
 
@@ -285,7 +285,7 @@ class Encuesta(models.Model):
         blank=False, null=True, max_length=255, default="", choices=OPCIONES_FINANCIAMIENTO_PROYECTOS)
 
     otra_como_finacia_proyectos= models.CharField(
-        'Otra fuentes', blank=False, null=True, max_length=255)
+        'Otra fuentes', blank=True, null=True, max_length=255)
 
     ###  39
 
@@ -295,7 +295,7 @@ class Encuesta(models.Model):
         blank=False, null=True, max_length=255, default="", choices=OPCIONES_ALIANZAS)
     ###  39.1
     tiene_alianzas_ongs_cuales= models.CharField(
-        '¿Cuáles?', blank=False, null=True, max_length=255)       
+        '¿Cuáles?', blank=True, null=True, max_length=255)
     ###  40
 
     alcance_actividades_sociales = MultiSelectField(
@@ -311,7 +311,7 @@ class Encuesta(models.Model):
         blank=False, null=True, max_length=255, default="", choices=OPCIONES_RESULTADOS_IMPACTOS)
 
     otros_resultados_destacados= models.CharField(
-        'Otros resultados', blank=False, null=True, max_length=255)
+        'Otros resultados', blank=True, null=True, max_length=255)
     ###  42
 
     como_interactua_comunidad = MultiSelectField(
@@ -345,7 +345,7 @@ class Encuesta(models.Model):
         '(puede seleccionar varios)',
         blank=False, null=True, max_length=255, default="", choices=OPCIONES_OFERTA_SERVICIOS_LIDERES)
     ofrece_servicios_sociedad_otra= models.CharField(
-        'Otra', blank=False, null=True, max_length=255)            
+        'Otra', blank=True, null=True, max_length=255)
     ###  44
 
     promueve_participacion_poblacion_sociales = MultiSelectField(
@@ -382,7 +382,7 @@ class Encuesta(models.Model):
         '(puede seleccionar varios)',
         blank=False, null=True, max_length=255, default="", choices=OPCIONES_ENFOQUE_ENTIDAD)
     otro_enfoque_principal_servicios = models.CharField(
-        'Otro enfoque principal', blank=False, null=True, max_length=255)
+        'Otro enfoque principal', blank=True, null=True, max_length=255)
     ###  49
 
     es_lider_religioso= models.CharField(
@@ -432,7 +432,7 @@ class Encuesta(models.Model):
         choices=BENEFICIOS_ADICIONALES_CHOICES)
 
     otros_beneficios_implementado_seguridad = models.CharField(
-        'Otros beneficio implementado en seguridad social', blank=False, null=True, max_length=255)
+        'Otros beneficio implementado en seguridad social', blank=True, null=True, max_length=255)
     ###  57
 
     participa_actividades_humanitarias = models.CharField(
@@ -489,4 +489,7 @@ class Encuesta(models.Model):
         blank=False, null=True, max_length=255, default="", choices=ACTIVIDADES_CUIDADO_CHOICES)
 
     creado = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.cedula
 
