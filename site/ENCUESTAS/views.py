@@ -3,10 +3,28 @@ from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
 from ENCUESTAS.models import Encuesta
 from ENCUESTAS.forms import EncuestaModelForm
+from django.utils import timezone
 
 
 class PaginaInicial(TemplateView):
-    template_name = "encuestas/base.html"
+    template_name = "encuestas/dashboard.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(PaginaInicial, self).get_context_data(**kwargs)
+        now = timezone.now()
+        # Calcular la fecha de inicio (hace 7 días)
+        seven_days_ago = now - timezone.timedelta(days=7)
+        # Calcular la fecha de inicio (hace 30 días)
+        month_ago = now - timezone.timedelta(days=30)
+
+        encuestas_ultimos_7_dias = Encuesta.objects.filter(creado__gte=seven_days_ago).count()
+        encuestas_ultimos_30_dias = Encuesta.objects.filter(creado__gte=month_ago).count()
+
+        context['total_encuestas'] = Encuesta.objects.count()
+        context['total_ultimos_7_dias'] = encuestas_ultimos_7_dias
+        context['total_ultimos_30_dias'] = encuestas_ultimos_30_dias
+
+        return context
 
 
 
