@@ -117,12 +117,14 @@
                   // Para limpiar el campo de tipo textinput cuando el usuario lo haya llenado
                   // Puedes agregar mas reglas para que deseleccione un checkbox o algo asi
                   // En caso que lo necesites
-                  $("#customgroup-"+ field_name_group_to_show_hide).val('')
+                  $('input[name="'+field_name_group_to_show_hide+'"]').val('');
+                }else{
+                  // hacer reset del valor del campo que abrio
                 }
             }
         });
       }
-      handleCustomGroupDisplay('select[name="zona_entidad_religiosa"]', 'OTRA', 'otra_zona_entidad');
+      handleCustomGroupDisplay('select[name="zona_entidad_religiosa"]', 'OTRA', 'otra_zona_entidad', "textinput");
   });
 </script>
 <style>
