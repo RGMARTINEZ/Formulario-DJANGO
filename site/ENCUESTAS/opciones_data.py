@@ -107,8 +107,8 @@ OPCIONES_TIPO_SERVICIOS = [
      'Programas de inclusión y apoyo a inmigrantes y refugiados.'),
     ('Apoyo espiritual para el sector penitenciario y carcelario.',
      'Apoyo espiritual para el sector penitenciario y carcelario.'),
-    ('NO_OFRECEMOS_SERVICIOS', 'No ofrecemos servicios sociales.'),
-    ('OTRO', 'Otro'),
+    ('No ofrecemos servicios sociales.', 'No ofrecemos servicios sociales.'),
+    ('Otro', 'Otro'),
 ]
 
 OPCIONES_PARTICIPACION_POBLACION = [
@@ -185,7 +185,6 @@ OPCIONES_DENOMINACION_RELIGIOSA = [
     ('MORMONES', 'Mormones'),
     ('METODISTAS', 'Metodistas'),
     ('TESTIGOS_DE_JEHOVA', 'Testigos de Jehová'),
-    ('OTRA', 'Otra'),
 ]
 
 ###  22.4

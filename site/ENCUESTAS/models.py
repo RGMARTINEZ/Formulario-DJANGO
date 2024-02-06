@@ -43,7 +43,7 @@ class Encuesta(models.Model):
         '¿Qué población atienden y ayuda su entidad religiosa? '
         '(puede marcar varias)', blank=False, null=False, max_length=255, default="", choices=TIPO_POBLACION)
     otra_poblacion_entidad = models.CharField(
-        'Otro tipo de población seleccionado', blank=True, null=True, max_length=255)
+        'Otro tipo de población', blank=True, null=True, max_length=255)
     ###  11.
     grupos_personas = MultiSelectField(
         'Dentro del siguiente grupo de personas, ¿Cuál atiende y beneficia su entidad religiosa? '
@@ -53,7 +53,7 @@ class Encuesta(models.Model):
     ###  12.
     atiende_poblacion_discapacitada = models.CharField(
         '¿Atiende población en la entidad religiosa en condición de discapacidad?',
-        blank=False, null=False, max_length=255, default=OPCIONES_SI_NO[0][0], choices=OPCIONES_SI_NO)
+        blank=False, null=False, max_length=255, default="", choices=OPCIONES_SI_NO)
     ###  12.1.
     tipos_discapacidades = MultiSelectField(
         'Si respondió si en la pregunta anterior ¿Qué tipo de discapacidad '
@@ -122,10 +122,26 @@ class Encuesta(models.Model):
         blank=False, null=True, max_length=255, default="", choices=OPCIONES_CARACTER_CONFESIONAL)
     otro_caracter_confesional = models.CharField(
         'Otro caracter confesional', blank=True, null=True, max_length=255)
-     ###  22.1
-    caracter_confesinal_seleccion = models.CharField(
+    ###  22.1
+    caracter_confesinal_judaimo = models.CharField(
         '¿A partir de su respuesta anterior, seleccione la que corresponde? ',
         blank=False, null=True, max_length=255, default="", choices=JUDAIMO_CHOICES)
+    ###  22.2
+    caracter_confesinal_islam = models.CharField(
+        '¿A partir de su respuesta anterior, seleccione la que corresponde? ',
+        blank=False, null=True, max_length=255, default="", choices=RAMAS_ISLAM_CHOICES)
+    ###  22.3
+    caracter_confesinal_cristianismo = models.CharField(
+        '¿A partir de su respuesta anterior, seleccione la que corresponde? ',
+        blank=False, null=True, max_length=255, default="", choices=OPCIONES_DENOMINACION_RELIGIOSA)    
+    ###  22.4
+    caracter_confesinal_budismo = models.CharField(
+        '¿A partir de su respuesta anterior, seleccione la que corresponde? ',
+        blank=False, null=True, max_length=255, default="", choices=TRADICIONES_BUDISTAS_CHOICES) 
+    ###  22.5
+    caracter_confesinal_hinduismo = models.CharField(
+        '¿A partir de su respuesta anterior, seleccione la que corresponde? ',
+        blank=False, null=True, max_length=255, default="", choices=TRADICIONES_HINDUISTAS_CHOICES)            
     ###  23
     entidad_registrada = models.CharField(
         ' ¿La Entidad religiosa está registrada en Colombia?',

@@ -104,11 +104,16 @@
   $(document).ready(function(){
       // Attach a change event to the select field
       function handleCustomGroupDisplay(selector, option_value, field_name_group_to_show_hide, type_of_field) {
+
+        console.log(selector, option_value, field_name_group_to_show_hide, type_of_field, 'DATOS CLICK')
         // La variable selector seria el campo en el que cambian las opciones.
         $(selector).on('change', function() {
             // Get the selected option value
             var selectedValue = $(this).val();
             // Show or hide the input field based on the selected option
+
+            console.log(selectedValue, "DATO SELECCIONADO", option_value, 'DATOS A COMPARAR')
+
             if (selectedValue === option_value) {
                 $("#customgroup-"+ field_name_group_to_show_hide).show();
             } else {
@@ -127,6 +132,54 @@
       // iterar un dict
       // [{"nombre": "zona_entidad_religiosa", "valor_que_abre": "OTRA", "nombre_opcion_que_debe_abrirse", "tipo_de_campo": "textinput"}]
       handleCustomGroupDisplay('select[name="zona_entidad_religiosa"]', 'OTRA', 'otra_zona_entidad', "textinput");
+      handleCustomGroupDisplay('input[name="poblacion_entidad"]', 'OTRO', 'otra_poblacion_entidad', "checkbox");
+      handleCustomGroupDisplay('input[name="grupos_personas"]', 'Otro(a)', 'otros_grupos_personas', "checkbox");
+      handleCustomGroupDisplay('select[name="atiende_poblacion_discapacitada"]', 'Si', 'tipos_discapacidades', "textinput");
+      handleCustomGroupDisplay('input[name="tipos_discapacidades"]', 'Otra', 'otra_discapacidad', "checkbox");
+      handleCustomGroupDisplay('input[name="idioma_principal"]', 'Otro', 'otro_idioma', "checkbox");
+      handleCustomGroupDisplay('input[name="tipo_actividad"]', 'Otro', 'otra_actividad', "checkbox");
+      handleCustomGroupDisplay('input[name="tipo_servicios"]', 'Otro', 'otro_servicio', "checkbox");
+      handleCustomGroupDisplay('input[name="participacion_poblacion"]', 'OTRO', 'otra_participacion', "checkbox");
+      handleCustomGroupDisplay('select[name="caracter_confesinal"]', 'JUDAISMO', 'caracter_confesinal_judaimo', "textinput");
+      handleCustomGroupDisplay('select[name="caracter_confesinal"]', 'ISLAM', 'caracter_confesinal_islam', "textinput");
+      handleCustomGroupDisplay('select[name="caracter_confesinal"]', 'CRISTIANISMO', 'caracter_confesinal_cristianismo', "textinput");
+      handleCustomGroupDisplay('select[name="caracter_confesinal"]', 'BUDISMO', 'caracter_confesinal_budismo', "textinput");
+      handleCustomGroupDisplay('select[name="caracter_confesinal"]', 'HINDUISMO', 'caracter_confesinal_hinduismo', "textinput");
+      handleCustomGroupDisplay('select[name="caracter_confesinal"]', 'OTRO', 'otro_caracter_confesional', "textinput");
+      handleCustomGroupDisplay('select[name="tipo_vocacion"]', 'OTRA', 'otra_vocacion', "textinput");
+      handleCustomGroupDisplay('select[name="tiene_organizaciones_sector"]', 'ORGANIZACIONES_REGISTRADAS_SI', 'tiene_organizaciones_sector_nombre', "textinput");
+      handleCustomGroupDisplay('select[name="tiene_organizaciones_sector"]', 'ORGANIZACIONES_REGISTRADAS_SI', 'tiene_organizaciones_sector_direccion', "textinput");
+      handleCustomGroupDisplay('select[name="tiene_organizaciones_sector"]', 'ORGANIZACIONES_REGISTRADAS_SI', 'tiene_organizaciones_sector_correo', "textinput");
+      handleCustomGroupDisplay('select[name="tiene_organizaciones_sector"]', 'ORGANIZACIONES_REGISTRADAS_SI', 'tiene_organizaciones_sector_telefono', "textinput");
+      handleCustomGroupDisplay('select[name="tiene_organizaciones_sector"]', 'ORGANIZACIONES_REGISTRADAS_SI', 'tiene_organizaciones_sector_nit', "textinput");
+      handleCustomGroupDisplay('select[name="participa_actividades_caridad"]', 'PARTICIPACION_SI', 'participa_actividades_caridad_departamento', "textselect");
+      handleCustomGroupDisplay('select[name="participa_actividades_caridad"]', 'PARTICIPACION_SI', 'participa_actividades_caridad_departamento_otro', "textselect");
+      handleCustomGroupDisplay('select[name="participa_actividades_caridad"]', 'PARTICIPACION_SI', 'participa_actividades_carida_municipio', "textselect");
+      handleCustomGroupDisplay('select[name="participa_actividades_caridad"]', 'PARTICIPACION_SI', 'participa_actividades_carida_municipio_otro', "textselect");
+      handleCustomGroupDisplay('select[name="participa_actividades_caridad"]', 'PARTICIPACION_SI', 'participa_actividades_caridad_localidad', "textselect");
+      handleCustomGroupDisplay('select[name="participa_actividades_caridad"]', 'PARTICIPACION_SI', 'participa_actividades_caridad_telefono', "textselect");
+      handleCustomGroupDisplay('select[name="participa_actividades_caridad"]', 'PARTICIPACION_SI', 'participa_actividades_caridad_descripcion', "textinput");
+      handleCustomGroupDisplay('input[name="colabora_proyectos_sociales"]', 'COLABORACION_RELIGIOSAS', 'colabora_proyectos_sociales_telefono', "checkbox");
+      handleCustomGroupDisplay('input[name="colabora_proyectos_sociales"]', 'COLABORACION_RELIGIOSAS', 'colabora_proyectos_sociales_celular', "checkbox");
+      handleCustomGroupDisplay('input[name="colabora_proyectos_sociales"]', 'COLABORACION_RELIGIOSAS', 'colabora_proyectos_sociales_correo', "checkbox");
+      handleCustomGroupDisplay('input[name="colabora_proyectos_sociales"]', 'COLABORACION_RELIGIOSAS', 'colabora_proyectos_sociale_representan', "checkbox");
+      handleCustomGroupDisplay('select[name="ofrece_servicios_poblaciones"]', 'SERVICIOS_SI', 'ofrece_servicios_poblaciones_otro', "textinput");
+      handleCustomGroupDisplay('select[name="impacto_comunidad_valores"]', 'IMPACTO_SI', 'impacto_comunidad_valores_cuales', "textinput");
+      handleCustomGroupDisplay('input[name="areas_temas_prioridad"]', 'OTROS', 'otra_areas_temas_prioridad', "checkbox");
+      handleCustomGroupDisplay('input[name="principales_inciativas_sociales"]', 'OTRAS_INICIATIVAS', 'otra_principales_inciativas_sociales', "checkbox");
+      handleCustomGroupDisplay('input[name="como_finacia_proyectos"]', 'OTRAS_FUENTES', 'otra_como_finacia_proyectos', "checkbox");
+      handleCustomGroupDisplay('select[name="tiene_alianzas_ongs"]', 'ALIANZAS_SI', 'tiene_alianzas_ongs_cuales', "textinput");
+      handleCustomGroupDisplay('input[name="resultados_destacados"]', 'OTRAS_MEJORAS_SOCIALES', 'otros_resultados_destacados', "checkbox");
+      handleCustomGroupDisplay('select[name="ofrece_servicios_sociedad"]', 'SERVICIOS_ESPECIFICOS', 'ofrece_servicios_sociedad_dificultades', "textinput");
+      handleCustomGroupDisplay('select[name="ofrece_servicios_sociedad"]', 'SERVICIOS_ESPECIFICOS', 'ofrece_servicios_sociedad_tecnica', "textinput");
+      handleCustomGroupDisplay('select[name="ofrece_servicios_sociedad"]', 'SERVICIOS_ESPECIFICOS', 'ofrece_servicios_sociedad_ciudadana', "textinput");
+      handleCustomGroupDisplay('select[name="ofrece_servicios_sociedad"]', 'SERVICIOS_ESPECIFICOS', 'ofrece_servicios_sociedad_lideres', "textinput");
+      handleCustomGroupDisplay('input[name="ofrece_servicios_sociedad_lideres"]', 'OTRA', 'ofrece_servicios_sociedad_otra', "checkbox");
+      handleCustomGroupDisplay('input[name="cuales_actividades_ods"]', 'OTRAS_ACTIVIDADES_ODS', 'otra_cuales_actividades_ods', "checkbox");
+      handleCustomGroupDisplay('input[name="enfoque_principal_servicios"]', 'OTRO', 'otro_enfoque_principal_servicios', "checkbox");
+      handleCustomGroupDisplay('input[name="beneficios_implementado_seguridad"]', 'OTROS', 'otros_beneficios_implementado_seguridad', "checkbox");
+
+
   });
 </script>
 <style>
