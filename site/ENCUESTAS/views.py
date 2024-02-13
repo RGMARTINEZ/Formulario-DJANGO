@@ -45,6 +45,14 @@ fields_to_hide = [
 "otro_servicio",
 "otra_participacion",
 "otro_caracter_confesional",
+
+"caracter_confesinal_judaimo",
+"caracter_confesinal_islam",
+"caracter_confesinal_cristianismo",
+"caracter_confesinal_budismo",
+"caracter_confesinal_hinduismo",
+
+
 "otra_vocacion",
 "tiene_organizaciones_sector_nombre",
 "tiene_organizaciones_sector_direccion",
@@ -69,7 +77,6 @@ fields_to_hide = [
 "otra_como_finacia_proyectos",
 "tiene_alianzas_ongs_cuales",
 "otros_resultados_destacados",
-"ofrece_servicios_sociedad",
 "ofrece_servicios_sociedad_dificultades",
 "ofrece_servicios_sociedad_tecnica",
 "ofrece_servicios_sociedad_ciudadana",
