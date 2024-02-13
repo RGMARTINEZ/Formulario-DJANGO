@@ -21,5 +21,5 @@ from ENCUESTAS.views import PaginaInicial
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("encuestas/", include("ENCUESTAS.urls")),
-    path("home/", PaginaInicial.as_view(), name="home"),
+    path("", PaginaInicial.as_view(), name="home"),
 ]
